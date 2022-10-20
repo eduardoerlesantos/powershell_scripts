@@ -1,0 +1,1 @@
+Get-ChildItem -Exclude "hash_sha256.csv" | Get-FileHash -Algorithm SHA256 | Select-Object @{N='Path';E={$_.Path | Resolve-Path -Relative}},Algorithm,Hash | Export-Csv -path "hash_sha256.csv" -Delimiter ";" -NoTypeInformation
